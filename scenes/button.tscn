@@ -13,5 +13,14 @@ offset_right = 228.0
 offset_bottom = 94.0
 
 [node name="Button3" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 68.0
+offset_top = 176.0
+offset_right = 127.0
+offset_bottom = 236.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 312.0
+offset_top = 43.0
+offset_right = 383.0
+offset_bottom = 66.0
+text = "sdfsdfsdf"
