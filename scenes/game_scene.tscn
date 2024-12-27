@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bk1fri51ypjrr"]
+
+[ext_resource type="Texture2D" uid="uid://dm8hwwyr0hxo8" path="res://sprits/tilemap/tile_set_1.png" id="1_lgtjy"]
+[ext_resource type="PackedScene" uid="uid://fcc5pq6705b4" path="res://scenes/player.tscn" id="2_x8a7l"]
+[ext_resource type="PackedScene" uid="uid://dcicepvy2mawa" path="res://scenes/T-rex.tscn" id="3_2vu6a"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_umanu"]
+texture = ExtResource("1_lgtjy")
+0:0/0 = 0
+0:0/0/probability = 2.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/probability = 2.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/probability = 2.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/probability = 2.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_yuafy"]
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "Terrain 1"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+sources/1 = SubResource("TileSetAtlasSource_umanu")
+
+[node name="game scene" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(5, 5)
+tile_set = SubResource("TileSet_yuafy")
+format = 2
+layer_0/tile_data = PackedInt32Array(786432, 65537, 0, 786433, 65537, 0, 786434, 65537, 0, 786435, 1, 0, 786436, 196609, 0, 786437, 131073, 0, 786438, 65537, 0, 786439, 1, 0, 786440, 1, 0, 786441, 1, 0, 786442, 65537, 0, 786443, 65537, 0, 786444, 1, 0, 786445, 1, 0, 786446, 196609, 0, 786447, 65537, 0, 786448, 131073, 0, 786449, 65537, 0, 786450, 65537, 0, 786451, 1, 0, 786452, 196609, 0, 786453, 65537, 0, 786454, 196609, 0, 786455, 65537, 0)
+
+[node name="player" parent="." instance=ExtResource("2_x8a7l")]
+position = Vector2(246, 910)
+
+[node name="T-rex" parent="." instance=ExtResource("3_2vu6a")]
+position = Vector2(1283, 898)
