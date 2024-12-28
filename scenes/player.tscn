@@ -1,28 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://fcc5pq6705b4"]
+[gd_scene load_steps=11 format=3 uid="uid://fcc5pq6705b4"]
 
 [ext_resource type="Script" path="res://codes/player/player.gd" id="1_6d0f6"]
 [ext_resource type="Texture2D" uid="uid://c160ocf5ndrg1" path="res://codes/icon.svg" id="1_35qv5"]
 [ext_resource type="Script" path="res://codes/player/health.gd" id="3_7h0in"]
 [ext_resource type="Script" path="res://codes/player/ui.gd" id="3_nmg3g"]
+[ext_resource type="Script" path="res://codes/player/stamina.gd" id="5_mldes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trlo7"]
 size = Vector2(128, 126)
-
-[sub_resource type="Animation" id="Animation_0u4bj"]
-resource_name = "quit"
-length = 1.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_dkqka"]
 length = 0.001
@@ -73,6 +58,22 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0u4bj"]
+resource_name = "quit"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_8jm5n"]
@@ -148,12 +149,24 @@ script = ExtResource("3_nmg3g")
 
 [node name="health" type="ProgressBar" parent="UI/CanvasLayer"]
 modulate = Color(1, 0, 0.0166664, 1)
-offset_left = 1683.0
-offset_right = 1921.0
-offset_bottom = 45.0
+offset_left = 1714.0
+offset_right = 1817.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
 value = 100.0
 show_percentage = false
 script = ExtResource("3_7h0in")
+
+[node name="stamina" type="ProgressBar" parent="UI/CanvasLayer"]
+modulate = Color(0.83, 0.691667, 0, 1)
+offset_left = 1714.0
+offset_top = 53.0
+offset_right = 1817.0
+offset_bottom = 77.0
+scale = Vector2(2, 2)
+value = 100.0
+show_percentage = false
+script = ExtResource("5_mldes")
 
 [node name="dead_menu" type="Label" parent="UI/CanvasLayer"]
 visible = false
@@ -209,6 +222,7 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,6 +233,13 @@ offset_bottom = 897.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [connection signal="pressed" from="UI/CanvasLayer/dead_menu/return" to="UI" method="_on_return_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/dead_menu/quit" to="UI" method="_on_quit_pressed"]

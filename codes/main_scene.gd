@@ -11,3 +11,7 @@ func _on_quit_pressed():
 	$AnimationPlayer.play("quit_")
 	await $AnimationPlayer.animation_finished
 	get_tree().quit()
+
+
+func _on_settings_pressed():
+	get_tree().change_scene_to_file("res://scenes/settings.tscn")
