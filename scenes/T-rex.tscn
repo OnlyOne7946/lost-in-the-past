@@ -7,13 +7,13 @@
 size = Vector2(128, 128)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qobc7"]
-radius = 612.265
+radius = 542.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsv4h"]
 size = Vector2(18.8571, 18.8571)
 
 [node name="T-rex" type="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ia8ii")
 
 [node name="Icon" type="Sprite2D" parent="."]
