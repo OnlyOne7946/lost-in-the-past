@@ -1,0 +1,149 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3v28hix2s802"]
+
+[ext_resource type="Script" path="res://codes/inventory/inventory_slot.gd" id="1_d5p75"]
+[ext_resource type="Texture2D" uid="uid://p361h33pafin" path="res://sprits/cake.png" id="2_c5hgu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l8uhf"]
+
+[node name="inventory_slot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -1760.0
+offset_bottom = -920.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d5p75")
+
+[node name="orderBorder" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.229395, 0.366127, 0.137759, 1)
+
+[node name="interBorder" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 70.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.712129, 0.712129, 0.712129, 1)
+
+[node name="item_icon" type="Sprite2D" parent="interBorder"]
+position = Vector2(70, 70)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_c5hgu")
+
+[node name="item_quantity" type="Label" parent="interBorder/item_icon"]
+offset_left = -26.0
+offset_top = -28.0
+offset_right = -14.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "1"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_item" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l8uhf")
+
+[node name="info_panel" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -135.0
+offset_right = 240.0
+offset_bottom = -5.0
+color = Color(0.229395, 0.366127, 0.137759, 1)
+
+[node name="item_name" type="Label" parent="info_panel"]
+layout_mode = 1
+offset_left = 5.0
+offset_right = 45.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "имя"
+
+[node name="item_type" type="Label" parent="info_panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -11.5
+offset_right = 45.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0338533, 0.0338533, 0.0338533, 1)
+theme_override_font_sizes/font_size = 30
+text = "тип"
+
+[node name="item_effect" type="Label" parent="info_panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -23.0
+offset_right = 45.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.0885598, 0.0885599, 0.0885599, 1)
+theme_override_font_sizes/font_size = 30
+text = "эффект"
+
+[node name="usage_panel" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+offset_top = -135.0
+offset_right = 240.0
+offset_bottom = -5.0
+color = Color(0.229395, 0.366127, 0.137759, 1)
+
+[node name="use" type="Button" parent="usage_panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.0
+offset_top = 10.0
+offset_right = 115.0
+offset_bottom = 53.0
+grow_horizontal = 2
+text = "использовать"
+
+[node name="delete" type="Button" parent="usage_panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -115.0
+offset_top = -59.0
+offset_right = 115.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "бросить"
+
+[connection signal="mouse_entered" from="Button_item" to="." method="_on_button_item_mouse_entered"]
+[connection signal="mouse_exited" from="Button_item" to="." method="_on_button_item_mouse_exited"]
+[connection signal="pressed" from="Button_item" to="." method="_on_button_item_pressed"]

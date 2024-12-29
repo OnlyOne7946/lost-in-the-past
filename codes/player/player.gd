@@ -7,6 +7,13 @@ var small_jump = -300
 var run = walk_speed
 var jump
 
+@onready var pick_up = $UI/CanvasLayer/pick_up
+@onready var inventory_ui = $inventory_UI
+
+func _ready():
+	Global.set_player_reference(self)
+
+
 func _physics_process(delta):
 	# Добавление гравитации
 	if not is_on_floor():
@@ -45,3 +52,8 @@ func _physics_process(delta):
 
 	# Движение
 	move_and_slide()
+
+func _input(event):
+	if event.is_action_pressed("inventory"):
+		inventory_ui.visible = !inventory_ui.visible
+		

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://fcc5pq6705b4"]
+[gd_scene load_steps=12 format=3 uid="uid://fcc5pq6705b4"]
 
 [ext_resource type="Script" path="res://codes/player/player.gd" id="1_6d0f6"]
-[ext_resource type="Texture2D" uid="uid://c160ocf5ndrg1" path="res://codes/icon.svg" id="1_35qv5"]
+[ext_resource type="Texture2D" uid="uid://c160ocf5ndrg1" path="res://icon.svg" id="1_35qv5"]
 [ext_resource type="Script" path="res://codes/player/health.gd" id="3_7h0in"]
 [ext_resource type="Script" path="res://codes/player/ui.gd" id="3_nmg3g"]
 [ext_resource type="Script" path="res://codes/player/stamina.gd" id="5_mldes"]
+[ext_resource type="PackedScene" uid="uid://cem0wujuj6shl" path="res://scenes/inventory/inventory_ui.tscn" id="6_cfvq5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trlo7"]
 size = Vector2(128, 126)
@@ -125,6 +126,7 @@ _data = {
 }
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
+process_mode = 3
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_6d0f6")
 
@@ -216,6 +218,35 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 90
 text = "выйти"
 
+[node name="pick_up" type="ColorRect" parent="UI/CanvasLayer"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_top = -90.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.181761, 0.308902, 0.141331, 1)
+
+[node name="Label" type="Label" parent="UI/CanvasLayer/pick_up"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -14.0
+offset_right = 141.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "нажмите [E] что бы забрать"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
 libraries = {
 "": SubResource("AnimationLibrary_uteea")
@@ -240,6 +271,34 @@ position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="inventory_UI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="inventory_UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.158059, 0.485145, 0.333063, 1)
+
+[node name="Label" type="Label" parent="inventory_UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -231.5
+offset_top = 38.0
+offset_right = 231.5
+offset_bottom = 175.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "inventory"
+
+[node name="inventory_UI2" parent="inventory_UI" instance=ExtResource("6_cfvq5")]
+offset_top = 1.0
+offset_right = -1820.0
+offset_bottom = -979.0
 
 [connection signal="pressed" from="UI/CanvasLayer/dead_menu/return" to="UI" method="_on_return_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/dead_menu/quit" to="UI" method="_on_quit_pressed"]

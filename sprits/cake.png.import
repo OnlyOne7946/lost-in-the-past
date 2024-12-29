@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://10qg5pwygqnd"
-path="res://.godot/imported/atlas.png-603be29b50f04cdf7449f631135253fd.ctex"
+uid="uid://p361h33pafin"
+path="res://.godot/imported/cake.png-9bac27ba780abf47f9b0e217f8f0a2e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprits/tilemap/atlas.png"
-dest_files=["res://.godot/imported/atlas.png-603be29b50f04cdf7449f631135253fd.ctex"]
+source_file="res://sprits/cake.png"
+dest_files=["res://.godot/imported/cake.png-9bac27ba780abf47f9b0e217f8f0a2e0.ctex"]
 
 [params]
 
