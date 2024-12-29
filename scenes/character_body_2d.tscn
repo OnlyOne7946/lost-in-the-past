@@ -4,7 +4,7 @@
 radius = 46.0
 height = 156.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="pterodaktel" type="CharacterBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_vsh62")
